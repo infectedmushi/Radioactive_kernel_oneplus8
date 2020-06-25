@@ -32,7 +32,6 @@ module_param(kcal_sat, short, 0644);
 module_param(kcal_val, short, 0644);
 module_param(kcal_cont, short, 0644);
 
-#if 1
 #ifdef CONFIG_UCI
 #include <linux/uci/uci.h>
 #endif
@@ -252,7 +251,6 @@ void sde_setup_dspp_pccv4(struct sde_hw_dspp *ctx, void *cfg)
 	struct drm_msm_pcc *pcc_cfg;
 	struct drm_msm_pcc_coeff *coeffs = NULL;
 	int i = 0;
-	int kcal_min = 20;
 	u32 base = 0;
 
 #ifdef CONFIG_UCI
