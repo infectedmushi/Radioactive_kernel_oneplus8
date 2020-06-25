@@ -90,17 +90,6 @@ uint8_t SingleTap_enable = 0;			 // single tap
 uint8_t Enable_gesture = 0;
 
 /*******Part2:declear Area********************************/
-
-#ifdef CONFIG_WAKE_GESTURES
-#include <linux/wake_gestures.h>
-int scr_suspended(void)
-{
-	return g_tp->is_suspended;
-}
-#elif
-bool wg_switch = false;
-#endif
-
 static void speedup_resume(struct work_struct *work);
 void esd_handle_switch(struct esd_information *esd_info, bool flag);
 int opticalfp_irq_handler(struct fp_underscreen_info* tp_info);
@@ -276,13 +265,6 @@ static void tp_touch_down(struct touchpanel_data *ts, struct point_info points, 
 			if(!CHK_BIT(ts->irq_slot, (1<<id)))
 				TPD_DETAIL("first touch point id %d [%4d %4d %4d]\n", id, points.x, points.y, points.z);
 		}
-
-
-#ifdef CONFIG_WAKE_GESTURES
-        if (g_tp->is_suspended && wg_switch)
-	        points.x += 5000;
-#endif
-
 	input_report_abs(ts->input_dev, ABS_MT_POSITION_X, points.x);
 	input_report_abs(ts->input_dev, ABS_MT_POSITION_Y, points.y);
 
@@ -5091,11 +5073,10 @@ static int tp_suspend(struct device *dev)
 
 	//step6:gesture mode status process
 	if (ts->black_gesture_support) {
-	        if (wg_switch)
-		    goto EXIT;
-	        else if (ts->gesture_enable == 1) {
-	 	    ts->ts_ops->mode_switch(ts->chip_data, MODE_GESTURE, true);
-		    goto EXIT;
+		if (ts->gesture_enable == 1) {
+			ts->ts_ops->mode_switch(ts->chip_data, MODE_TOUCH_HOLD, false);//suspend, close touchhold function.
+			ts->ts_ops->mode_switch(ts->chip_data, MODE_GESTURE, true);
+			goto EXIT;
 		}
 	}
 
@@ -5287,7 +5268,7 @@ static int tfb_notifier_callback(struct notifier_block *self, unsigned long even
 				if (ts->tp_suspend_order == TP_LCD_SUSPEND) {
 					tp_suspend(ts->dev);
 				} else if (ts->tp_suspend_order == LCD_TP_SUSPEND) {
-					if (!ts->gesture_enable && !wg_switch) {
+					if (!ts->gesture_enable) {
 						TPD_INFO("disable tp isr 111,  tp irq  %d\n", ts->irq);
 						disable_irq_nosync(ts->irq);	//avoid iic error
 					}
@@ -5383,7 +5364,7 @@ void tp_i2c_suspend(struct touchpanel_data *ts)
 {
 	ts->i2c_ready = false;
 	if (ts->black_gesture_support) {
-		if (ts->gesture_enable == 1 || wg_switch) {
+		if (ts->gesture_enable == 1) {
 			/*enable gpio wake system through interrupt*/
 			enable_irq_wake(ts->irq);
 			return;
@@ -5427,15 +5408,10 @@ void tp_i2c_suspend(struct touchpanel_data *ts)
 void tp_i2c_resume(struct touchpanel_data *ts)
 {
 	if (ts->black_gesture_support) {
-		if (ts->gesture_enable == 1 || wg_switch) {
+		if (ts->gesture_enable == 1) {
 			/*disable gpio wake system through intterrupt*/
 			disable_irq_wake(ts->irq);
 			goto OUT;
-		}
-
-		if (wg_changed) {
-		    wg_switch = wg_switch_temp;
-		    wg_changed = false;
 		}
 	}
 	enable_irq(ts->irq);
