@@ -666,13 +666,13 @@ static const struct attribute_group gf_attribute_group = {
 static struct fp_underscreen_info fp_tpinfo ={0};
 int opticalfp_irq_handler(struct fp_underscreen_info* tp_info)
 {
-	pr_info("[info]:%s", __func__);
+	pr_debug("[info]:%s", __func__);
 
 	if (gf.spi == NULL) {
 		return 0;
 	}
 	fp_tpinfo = *tp_info;
-	pr_err("fp_tpinfo.x = %d, fp_tpinfo.y = %d, fp_tpinfo.touch_state = %d\n", fp_tpinfo.x, fp_tpinfo.y,fp_tpinfo.touch_state);
+	pr_debug("fp_tpinfo.x = %d, fp_tpinfo.y = %d, fp_tpinfo.touch_state = %d\n", fp_tpinfo.x, fp_tpinfo.y,fp_tpinfo.touch_state);
 	if (fp_tpinfo.touch_state == 1) {
 		fp_tpinfo.touch_state = GF_NET_EVENT_TP_TOUCHDOWN;
 		sendnlmsg_tp(&fp_tpinfo,sizeof(fp_tpinfo));
@@ -785,7 +785,7 @@ static int goodix_fb_state_chg_callback(
 
 		switch (blank) {
 		case 0:
-			pr_info("[%s] UI disappear\n", __func__);
+			pr_debug("[%s] UI disappear\n", __func__);
 			msg = GF_NET_EVENT_UI_DISAPPEAR;
 			sendnlmsg(&msg);
 			break;
