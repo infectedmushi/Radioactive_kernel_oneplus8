@@ -146,3 +146,18 @@ kernel/configs/android-*.cfg
 
 # Oem charge directories
 #drivers/power/supply
+
+*.rej
+*.diff
+*.patch
+*.list
+
+# Kernel compilation output directory
+out/
+
+# Wireguard
+net/wireguard/
+
+# Build script and changelog generator
+build.sh
+changelog.sh
