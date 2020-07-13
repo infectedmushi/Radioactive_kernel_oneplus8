@@ -1,12 +1,5 @@
-Project name: Radioactive_kernel_oneplus8/8Pro-V1.0.4
+Project name: Radioactive_kernel_oneplus8/8Pro-V1.0.5
   * update build version (acuicultor)
-  * techpack: display: add OnePlus 8 missing config entries (acuicultor) [608dba0c32fc]
-  * fs/dyn_sync_cntrl: dynamic sync control (Paul Reioux) [6229fd9587df]
-  * defconfig regenerate (acuicultor) [22aecff87668]
-  * fs: exfat: version 2.2.0-3arter97 (engstk) [347eee604d67]
-  * fs: exfat: merge up to version 2.2.0-2arter97 (engstk) [47222ea6b695]
-  * fs: exfat: add exfat-linux source (engstk) [8994ad70146f]
-  * defconfig regenerate (acuicultor) [66cb8941a1b2]
-  * Revert "Drivers: Introduce K-lapse v5.0" (acuicultor) [421c3409e377]
-  * scripts/Makefile.lib: speed up build process (Yaroslav Furman) [ffc86485e05c]
-  * fix some merge errors (flar2) [8fbe5d9d3058]
+  * Don't build legacy QCOM DTS. (ZVNexus) [1895a8b05008]
+  * Revert "add PW dual feature" (acuicultor) [68b3d70d5c74]
+  * Revert "remove dual MIPI" (acuicultor) [f6f562292fc5]
