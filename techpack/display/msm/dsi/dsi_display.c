@@ -1059,7 +1059,7 @@ error:
 			gamma_read_flag++;
 		}
 		else {
-			schedule_delayed_work(&dsi_display->panel->gamma_read_work, 0);
+			queue_delayed_work(system_power_efficient_wq, &dsi_display->panel->gamma_read_work, 0);
 			gamma_read_flag++;
 		}
 	}
@@ -1226,7 +1226,7 @@ static irqreturn_t dsi_display_panel_err_flag_irq_handler(int irq, void *data)
 	if (!display->panel->err_flag_status) {
 		display->panel->err_flag_status = true;
 		cancel_delayed_work_sync(sde_esk_check_delayed_work);
-		schedule_delayed_work(sde_esk_check_delayed_work, 0);
+		queue_delayed_work(system_power_efficient_wq, sde_esk_check_delayed_work, 0);
 		DSI_ERR("schedule sde_esd_check_delayed_work\n");
 	}
 
