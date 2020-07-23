@@ -1,5 +1,14 @@
-Project name: Radioactive_kernel_oneplus8/8Pro-V1.0.5
+Project name: Radioactive_kernel_oneplus8/8Pro-V1.0.7
   * update build version (acuicultor)
-  * Don't build legacy QCOM DTS. (ZVNexus) [1895a8b05008]
-  * Revert "add PW dual feature" (acuicultor) [68b3d70d5c74]
-  * Revert "remove dual MIPI" (acuicultor) [f6f562292fc5]
+  * Synchronize codes for OnePlus 8 Oxygen OS 10.5.11.IN21AA and OnePlus 8 Pro Oxygen OS 10.5.12.IN11AA (xunanbin) [49cd7563fd84]
+  * restart the phone after the aging is complete (xunanbin) [00277009ebd2]
+  * techpack: display: build iris dual on op8pro (acuicultor) [eafd22742f65]
+  * Revert "Revert "add PW dual feature"" (acuicultor) [52a84c4b6c3e]
+  * Revert "Revert "remove dual MIPI"" (acuicultor) [c41422e47e72]
+  * [CVE-2019-20636]: Input: add safety guards to input_set_keycode() (xunanbin) [e7b4205bab16]
+  * drivers: oneplus: fix a strict-prototype error (Kristof Petho) [3565c5b7e357]
+  * kbuild: Disable -Wpointer-to-int-cast (Danny Lin) [3514f92b7351]
+  * kbuild: Disable -Wpointer-to-enum-cast (Nathan Chancellor) [45e6b3bb31eb]
+  * kbuild: Don't try to add '-fcatch-undefined-behavior' flag (Nathan Chancellor) [35726b39df23]
+  * defconfig: Disable CONFIGFS_RNDIS on all targets On targets that supports GSI, disable f_rndis driver to prevent the un-necessary bind of this function when userspace rules links the rndis.gs4 for rndis function. Also, this will prevent the net daemon trying to bring up the usb0 registered by the f_rndis driver, which will cause no-IP failure on host PC. (Sriharsha Allenki) [acfdd71e0890]
+  * [CVE-2020-8428]: do_last(): fetch directory ->i_mode and ->i_uid before it's too late (xunanbin) [efe381fb5b3b]
