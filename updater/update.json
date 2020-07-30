@@ -1,11 +1,11 @@
 {
   "kernel": {
     "name": "Radioactive Kernel OP8/OP8Pro",
-    "version": "V1.0.7",
-    "link": "https://github.com/acuicultor/Radioactive_kernel_oneplus8/releases/download/V1.0.7/RadioactiveKernel_V1.0.7_OnePlus8-8PRO.zip",
+    "version": "V1.0.8",
+    "link": "https://github.com/acuicultor/Radioactive_kernel_oneplus8/releases/download/V1.0.8/RadioactiveKernel_V1.0.8_OnePlus8-8PRO.zip",
     "changelog_url": "https://raw.githubusercontent.com/acuicultor/Radioactive_kernel_oneplus8/release/updater/changelog.txt",
-    "date": "2020-07-23",
-    "sha1": "10bf3cdcfa1187be1cda9fc842ab5117ab51db56" 
+    "date": "2020-07-30",
+    "sha1": "947abfc86d928ed0b13640e6e901541e7ad31dd9" 
   },
   "support": {
     "link": "https://forum.xda-developers.com/oneplus-8/oneplus-8--8-pro-cross-device-development/kernel-radioactive-kernel-v1-0-0-t4116263?nocache=1"           
