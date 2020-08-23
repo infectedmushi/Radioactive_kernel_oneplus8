@@ -1,5 +1,13 @@
-Project name: Radioactive_kernel_oneplus8/8Pro-V1.0.8
+Project name: Radioactive_kernel_oneplus8/8Pro-V1.1.2
   * update build version (acuicultor)
-  * cpufreq: schedutil: Relax schedutil up/down rate limit thresholds (acuicultor) [58b4b8a25815]
-  * cpufreq: schedutil: Enable iowait boost (acuicultor) [fd8676bbae2d]
-  * techpack: display: disable debug logging (Kristof Petho) [e0cda3929d51]
+  * arm64: dts: kona-v2-gpu: Overclock to 670mhz (LibXZR) [300324f77804]
+  * display: dsi: Disable logging (LibXZR) [7a000aef8e68]
+  * lpm-levels: Nuke minidump (LibXZR) [c75c912d816f]
+  * cpuidle: lpm-levels: Remove debug event logging (Danny Lin) [ea390489b5b3]
+  * block: Do not collect I/O statistics (Tyler Nijmeh) [1f45e6a8f72e]
+  * drivers: gpu: msm: Only build adreno 6xx part (LibXZR) [03b48365e0f1]
+  * msm: ipa3: Fix to use the msecs_to_jiffies (Ashok Vuyyuru) [c740753defad]
+  * Makefile: use ccache (acuicultor) [a909664c863a]
+  * rcu: fix a performance regression (Yaroslav Furman) [3d9faa4684a5]
+  * irq: spurious: Disable IRQ debugging by default (Tyler Nijmeh) [d2c60a59e9e0]
+  * cpuidle: Do not select menu and ladder governors (Maulik Shah) [4640b43b64db]
