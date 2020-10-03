@@ -62,7 +62,7 @@ cpu_boost_attr_rw(sched_boost_on_input);
 static bool sched_boost_active;
 
 #ifdef CONFIG_DYNAMIC_STUNE_BOOST
-static int dynamic_stune_boost;
+static int dynamic_stune_boost = 1;
 show_one(dynamic_stune_boost);
 store_one(dynamic_stune_boost);
 cpu_boost_attr_rw(dynamic_stune_boost);
@@ -70,7 +70,7 @@ cpu_boost_attr_rw(dynamic_stune_boost);
 static bool stune_boost_active;
 static int boost_slot;
 
-static unsigned int dynamic_stune_boost_ms = 40;
+static unsigned int dynamic_stune_boost_ms = 20;
 show_one(dynamic_stune_boost_ms);
 store_one(dynamic_stune_boost_ms);
 cpu_boost_attr_rw(dynamic_stune_boost_ms);
